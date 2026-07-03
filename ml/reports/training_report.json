@@ -1,0 +1,157 @@
+{
+  "target": "fuel_used_l",
+  "dataset_size": 12000,
+  "train_size": 9600,
+  "test_size": 2400,
+  "feature_columns": [
+    "distance_km",
+    "elevation_gain_m",
+    "load_weight_kg",
+    "kerb_weight_kg",
+    "load_capacity_kg",
+    "maintenance_score",
+    "temperature_c",
+    "rainfall_mm",
+    "wind_speed_kmh",
+    "humidity_pct",
+    "stops",
+    "avg_speed_kmph",
+    "hour_sin",
+    "hour_cos",
+    "vehicle_type",
+    "fuel_type",
+    "road_type",
+    "traffic_level",
+    "priority"
+  ],
+  "baseline_metrics": {
+    "linear_regression": {
+      "mae": 78.0125,
+      "rmse": 104.7926,
+      "r2": 0.8219,
+      "mape": 836.75,
+      "fit_seconds": 0.03,
+      "cv_r2_mean": 0.803,
+      "cv_r2_std": 0.0063
+    },
+    "random_forest": {
+      "mae": 21.3683,
+      "rmse": 37.1962,
+      "r2": 0.9776,
+      "mape": 11.2,
+      "fit_seconds": 6.32,
+      "cv_r2_mean": 0.9718,
+      "cv_r2_std": 0.001
+    },
+    "gradient_boosting": {
+      "mae": 18.8441,
+      "rmse": 30.3653,
+      "r2": 0.9851,
+      "mape": 41.29,
+      "fit_seconds": 6.75,
+      "cv_r2_mean": 0.9851,
+      "cv_r2_std": 0.0
+    },
+    "xgboost": {
+      "mae": 15.5018,
+      "rmse": 27.3026,
+      "r2": 0.9879,
+      "mape": 15.77,
+      "fit_seconds": 0.72,
+      "cv_r2_mean": 0.9856,
+      "cv_r2_std": 0.0004
+    },
+    "lightgbm": {
+      "mae": 15.4076,
+      "rmse": 27.015,
+      "r2": 0.9882,
+      "mape": 16.62,
+      "fit_seconds": 0.62,
+      "cv_r2_mean": 0.9851,
+      "cv_r2_std": 0.0004
+    },
+    "catboost": {
+      "mae": 15.893,
+      "rmse": 26.8096,
+      "r2": 0.9883,
+      "mape": 20.97,
+      "fit_seconds": 1.41,
+      "cv_r2_mean": 0.9883,
+      "cv_r2_std": 0.0
+    }
+  },
+  "tuned_metrics": {},
+  "tuning_summaries": {},
+  "best_model": "catboost",
+  "best_metrics": {
+    "mae": 15.893,
+    "rmse": 26.8096,
+    "r2": 0.9883,
+    "mape": 20.97,
+    "fit_seconds": 1.41,
+    "cv_r2_mean": 0.9883,
+    "cv_r2_std": 0.0
+  },
+  "all_results_ranked": [
+    {
+      "model": "catboost",
+      "mae": 15.893,
+      "rmse": 26.8096,
+      "r2": 0.9883,
+      "mape": 20.97,
+      "fit_seconds": 1.41,
+      "cv_r2_mean": 0.9883,
+      "cv_r2_std": 0.0
+    },
+    {
+      "model": "lightgbm",
+      "mae": 15.4076,
+      "rmse": 27.015,
+      "r2": 0.9882,
+      "mape": 16.62,
+      "fit_seconds": 0.62,
+      "cv_r2_mean": 0.9851,
+      "cv_r2_std": 0.0004
+    },
+    {
+      "model": "xgboost",
+      "mae": 15.5018,
+      "rmse": 27.3026,
+      "r2": 0.9879,
+      "mape": 15.77,
+      "fit_seconds": 0.72,
+      "cv_r2_mean": 0.9856,
+      "cv_r2_std": 0.0004
+    },
+    {
+      "model": "gradient_boosting",
+      "mae": 18.8441,
+      "rmse": 30.3653,
+      "r2": 0.9851,
+      "mape": 41.29,
+      "fit_seconds": 6.75,
+      "cv_r2_mean": 0.9851,
+      "cv_r2_std": 0.0
+    },
+    {
+      "model": "random_forest",
+      "mae": 21.3683,
+      "rmse": 37.1962,
+      "r2": 0.9776,
+      "mape": 11.2,
+      "fit_seconds": 6.32,
+      "cv_r2_mean": 0.9718,
+      "cv_r2_std": 0.001
+    },
+    {
+      "model": "linear_regression",
+      "mae": 78.0125,
+      "rmse": 104.7926,
+      "r2": 0.8219,
+      "mape": 836.75,
+      "fit_seconds": 0.03,
+      "cv_r2_mean": 0.803,
+      "cv_r2_std": 0.0063
+    }
+  ]
+}

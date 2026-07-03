@@ -1,0 +1,9 @@
+{
+  "n_records": 50000,
+  "n_vehicles": 500,
+  "fuel_used_mean": 238.834129278,
+  "fuel_used_std": 251.72827923185082,
+  "co2_mean": 593.211113522,
+  "delivery_time_mean_h": 39.476206304,
+  "distance_mean_km": 878.9520449400001
+}
