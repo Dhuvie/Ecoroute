@@ -1,14 +1,13 @@
 # Render Blueprint for EcoRoute full-stack deployment
 # See docs/DEPLOYMENT.md or cloud_deployment_guide.md for more info.
-services:
-  # 1. PostgreSQL Database
-  - type: db
-    name: ecoroute-db
+databases:
+  - name: ecoroute-db
     databaseName: ecoroute
     user: ecoroute
     plan: free
 
-  # 2. FastAPI Backend
+services:
+  # 1. FastAPI Backend
   - type: web
     name: ecoroute-backend
     env: docker
