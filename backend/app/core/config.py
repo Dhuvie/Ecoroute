@@ -15,7 +15,8 @@ from functools import lru_cache
 from pathlib import Path
 from typing import List
 
-from pydantic import Field
+import json
+from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -48,6 +49,19 @@ class Settings(BaseSettings):
             "http://127.0.0.1:5173",
         ]
     )
+
+    @field_validator("cors_origins", mode="before")
+    @classmethod
+    def parse_cors_origins(cls, v: any) -> list[str]:
+        if isinstance(v, str):
+            try:
+                parsed = json.loads(v)
+                if isinstance(parsed, list):
+                    return [str(item).strip() for item in parsed]
+                return [str(parsed).strip()]
+            except json.JSONDecodeError:
+                return [item.strip() for item in v.split(",") if item.strip()]
+        return v
 
     # ------------------------------------------------------------------ #
     # Database
