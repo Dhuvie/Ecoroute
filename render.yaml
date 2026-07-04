@@ -12,7 +12,7 @@ services:
     name: ecoroute-backend
     env: docker
     dockerfilePath: docker/Dockerfile.backend
-    context: .
+    dockerContext: .
     plan: starter
     envVars:
       - key: DATABASE_URL
@@ -29,9 +29,8 @@ services:
     name: ecoroute-frontend
     env: docker
     dockerfilePath: docker/Dockerfile.frontend
-    context: .
+    dockerContext: .
     plan: starter
-    port: 80
     envVars:
       - key: VITE_API_URL
         value: "https://ecoroute-backend.onrender.com/api/v1" # Update this to your deployed backend service URL
