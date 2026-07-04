@@ -75,6 +75,10 @@ class Settings(BaseSettings):
     def safe_database_url(self) -> str:
         """Return a SQLAlchemy-compatible URL, falling back to local SQLite."""
         url = self.database_url
+        # Convert legacy postgres:// prefix to postgresql:// for SQLAlchemy compatibility
+        if url.startswith("postgres://"):
+            url = url.replace("postgres://", "postgresql://", 1)
+
         if url.startswith(("sqlite:///", "postgresql://", "postgresql+psycopg2://", "mysql://", "mysql+pymysql://")):
             return url
         # Fall back to default SQLite if env var is malformed
