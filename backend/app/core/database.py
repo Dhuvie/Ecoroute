@@ -45,6 +45,15 @@ Base = declarative_base()
 
 def init_db() -> None:
     """Create all tables. Safe to call on every startup."""
+    # Ensure SQLite directory exists if using SQLite
+    if _db_url.startswith("sqlite:///"):
+        db_path = _db_url.split("sqlite:///", 1)[1]
+        from pathlib import Path
+        try:
+            Path(db_path).resolve().parent.mkdir(parents=True, exist_ok=True)
+        except Exception as e:
+            logger.warning("Could not create database directory: %s", e)
+
     # Import models so they register with Base.metadata
     from .. import models  # noqa: F401
 
