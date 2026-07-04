@@ -27,7 +27,10 @@ const client = axios.create({
 // --------------------------------------------------------------------------- //
 export const api = {
   async health(): Promise<HealthResponse> {
-    const r = await axios.get('/health')
+    const rootUrl = BASE_URL.endsWith('/api/v1')
+      ? BASE_URL.slice(0, -7)
+      : BASE_URL;
+    const r = await axios.get(`${rootUrl}/health`)
     return r.data
   },
 
