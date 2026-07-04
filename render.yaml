@@ -1,0 +1,38 @@
+# Render Blueprint for EcoRoute full-stack deployment
+# See docs/DEPLOYMENT.md or cloud_deployment_guide.md for more info.
+services:
+  # 1. PostgreSQL Database
+  - type: db
+    name: ecoroute-db
+    databaseName: ecoroute
+    user: ecoroute
+    plan: free
+
+  # 2. FastAPI Backend
+  - type: web
+    name: ecoroute-backend
+    env: docker
+    dockerfilePath: docker/Dockerfile.backend
+    context: .
+    plan: starter
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: ecoroute-db
+          property: connectionString
+      - key: DEBUG
+        value: "false"
+      - key: CORS_ORIGINS
+        value: "*" # Can be restricted to frontend URL post-deployment
+
+  # 3. React Frontend (Nginx-served)
+  - type: web
+    name: ecoroute-frontend
+    env: docker
+    dockerfilePath: docker/Dockerfile.frontend
+    context: .
+    plan: starter
+    port: 80
+    envVars:
+      - key: VITE_API_URL
+        value: "https://ecoroute-backend.onrender.com/api/v1" # Update this to your deployed backend service URL
