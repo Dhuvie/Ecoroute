@@ -9,6 +9,8 @@ RUN npm ci --no-audit --no-fund
 COPY frontend/ ./
 # Build with increased heap for plotly
 ENV NODE_OPTIONS="--max-old-space-size=3072"
+ARG VITE_API_URL
+ENV VITE_API_URL=$VITE_API_URL
 RUN npm run build
 
 # --------------------------------------------------------------------------- #
