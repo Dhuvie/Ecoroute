@@ -14,10 +14,7 @@ import type {
   Vehicle,
 } from '../types'
 
-let BASE_URL = import.meta.env.VITE_API_URL || '/api/v1'
-if (BASE_URL && !BASE_URL.endsWith('/api/v1')) {
-  BASE_URL = BASE_URL.replace(/\/$/, '') + '/api/v1'
-}
+const BASE_URL = '/api/v1'
 console.log('EcoRoute API Client initialized with BASE_URL:', BASE_URL)
 
 const client = axios.create({
