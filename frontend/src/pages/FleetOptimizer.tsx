@@ -70,7 +70,7 @@ export default function FleetOptimizer() {
           <button
             onClick={optimize}
             disabled={optimizing}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-eco-500 text-white hover:bg-eco-400 disabled:opacity-50 text-sm font-medium"
+            className="flex items-center gap-2 px-6 py-2 rounded btn-skeuo font-bold uppercase tracking-wider text-[10px]"
           >
             {optimizing ? (
               <>
@@ -79,7 +79,7 @@ export default function FleetOptimizer() {
               </>
             ) : (
               <>
-                <Network size={16} />
+                <Network size={14} className="drop-shadow-md" />
                 Optimize Fleet
               </>
             )}
@@ -107,10 +107,10 @@ export default function FleetOptimizer() {
               deliveries.map((d) => (
                 <label
                   key={d.id}
-                  className={`flex items-center gap-3 p-2 rounded-lg cursor-pointer transition-colors ${
+                  className={`flex items-center gap-3 p-2 rounded cursor-pointer transition-colors ${
                     selectedDeliveries.has(d.id)
-                      ? 'bg-eco-500/10 border border-eco-500/30'
-                      : 'hover:bg-ink-800/40 border border-transparent'
+                      ? 'bg-panel-700 shadow-recessed border-t border-black/80 border-b border-white/5'
+                      : 'hover:bg-panel-600/30 border border-transparent'
                   }`}
                 >
                   <input
@@ -123,10 +123,10 @@ export default function FleetOptimizer() {
                   />
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-mono text-slate-200">
+                      <span className="text-sm font-mono text-slate-200 drop-shadow-md">
                         {d.delivery_code}
                       </span>
-                      <Badge className="bg-ink-800 text-slate-400 border-ink-700">
+                      <Badge className="bg-panel-800 text-slate-400">
                         {d.priority}
                       </Badge>
                     </div>
@@ -163,10 +163,10 @@ export default function FleetOptimizer() {
             {vehicles.map((v) => (
               <label
                 key={v.id}
-                className={`flex items-center gap-3 p-2 rounded-lg cursor-pointer transition-colors ${
+                className={`flex items-center gap-3 p-2 rounded cursor-pointer transition-colors ${
                   selectedVehicles.has(v.id)
-                    ? 'bg-eco-500/10 border border-eco-500/30'
-                    : 'hover:bg-ink-800/40 border border-transparent'
+                    ? 'bg-panel-700 shadow-recessed border-t border-black/80 border-b border-white/5'
+                    : 'hover:bg-panel-600/30 border border-transparent'
                 }`}
               >
                 <input
@@ -179,10 +179,10 @@ export default function FleetOptimizer() {
                 />
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-mono text-slate-200">
+                    <span className="text-sm font-mono text-slate-200 drop-shadow-md">
                       {v.vehicle_id}
                     </span>
-                    <Badge className="bg-ink-800 text-slate-400 border-ink-700">
+                    <Badge className="bg-panel-800 text-slate-400">
                       {v.vehicle_type}
                     </Badge>
                   </div>
@@ -248,7 +248,7 @@ export default function FleetOptimizer() {
                 return (
                   <div
                     key={i}
-                    className="rounded-lg border border-ink-800 bg-ink-800/30 p-4"
+                    className="rounded panel-recessed p-4 border-t border-black/80 border-b border-white/5"
                   >
                     <div className="flex items-start justify-between mb-2">
                       <div className="flex items-center gap-2">
@@ -264,7 +264,7 @@ export default function FleetOptimizer() {
                           </p>
                         </div>
                       </div>
-                      <Badge className="bg-eco-500/15 text-eco-300 border-eco-500/30">
+                      <Badge className="bg-eco-500/15 text-eco-400 border-eco-500/30 drop-shadow-[0_0_5px_rgba(34,197,94,0.3)]">
                         {a.delivery_codes.length} stops
                       </Badge>
                     </div>
@@ -290,7 +290,7 @@ export default function FleetOptimizer() {
                       {a.delivery_codes.map((code, j) => (
                         <span
                           key={j}
-                          className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-ink-900 text-slate-400"
+                          className="text-[10px] font-mono px-2 py-0.5 rounded bg-panel-800 shadow-lcd border-t border-black border-b border-white/5 text-slate-300"
                         >
                           {j + 1}. {code}
                         </span>

@@ -65,17 +65,17 @@ export default function ModelInsights() {
       />
 
       {/* Best model banner */}
-      <Card className="mb-6 bg-gradient-to-br from-eco-500/10 to-transparent border-eco-500/30">
+      <Card className="mb-6 bg-metal-gradient border-t border-black/80 shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
         <div className="flex items-center gap-4">
-          <div className="p-4 rounded-xl bg-eco-500/15 text-eco-400">
+          <div className="p-4 rounded shadow-recessed bg-panel-800 border-t border-black/80 border-b border-white/5 text-eco-500 drop-shadow-[0_0_5px_rgba(34,197,94,0.3)]">
             <BrainCircuit size={32} />
           </div>
           <div className="flex-1">
             <div className="flex items-center gap-2">
-              <h2 className="text-xl font-bold text-white">
+              <h2 className="text-xl font-bold text-slate-200 drop-shadow-md">
                 {health?.model_name || best.model}
               </h2>
-              <Badge className="bg-eco-500/15 text-eco-300 border-eco-500/30">
+              <Badge className="bg-panel-900 text-eco-400 shadow-lcd border-t border-black/80 border-b border-white/5 drop-shadow-[0_0_5px_rgba(34,197,94,0.3)]">
                 Production Model
               </Badge>
             </div>
@@ -92,39 +92,47 @@ export default function ModelInsights() {
 
       {/* Quick stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        <Card>
-          <div className="flex items-center gap-2 text-eco-400 mb-2">
+        <Card className="flex flex-col items-center text-center panel-recessed p-4 border-t border-black/80 border-b border-white/5">
+          <div className="flex items-center gap-2 text-eco-500 drop-shadow-[0_0_5px_currentColor] mb-2">
             <Target size={16} />
-            <span className="text-xs uppercase text-slate-500">MAE</span>
+            <span className="text-[10px] uppercase text-slate-500 font-bold tracking-widest drop-shadow-md">MAE</span>
           </div>
-          <p className="text-2xl font-bold text-white">{best.mae.toFixed(2)} L</p>
-          <p className="text-xs text-slate-500 mt-1">Mean Absolute Error</p>
+          <div className="mt-1 bg-panel-900 shadow-lcd rounded px-3 py-1.5 border-t border-black border-b border-white/5 w-full flex flex-col items-center">
+            <p className="text-2xl font-display font-bold text-white tracking-wider">{best.mae.toFixed(2)} <span className="text-sm text-slate-500">L</span></p>
+          </div>
+          <p className="text-[9px] text-slate-500 mt-2 uppercase tracking-wider font-bold">Mean Absolute Error</p>
         </Card>
-        <Card>
-          <div className="flex items-center gap-2 text-amber-400 mb-2">
+        <Card className="flex flex-col items-center text-center panel-recessed p-4 border-t border-black/80 border-b border-white/5">
+          <div className="flex items-center gap-2 text-amber-500 drop-shadow-[0_0_5px_currentColor] mb-2">
             <Target size={16} />
-            <span className="text-xs uppercase text-slate-500">RMSE</span>
+            <span className="text-[10px] uppercase text-slate-500 font-bold tracking-widest drop-shadow-md">RMSE</span>
           </div>
-          <p className="text-2xl font-bold text-white">{best.rmse.toFixed(2)} L</p>
-          <p className="text-xs text-slate-500 mt-1">Root Mean Sq Error</p>
+          <div className="mt-1 bg-panel-900 shadow-lcd rounded px-3 py-1.5 border-t border-black border-b border-white/5 w-full flex flex-col items-center">
+            <p className="text-2xl font-display font-bold text-white tracking-wider">{best.rmse.toFixed(2)} <span className="text-sm text-slate-500">L</span></p>
+          </div>
+          <p className="text-[9px] text-slate-500 mt-2 uppercase tracking-wider font-bold">Root Mean Sq Error</p>
         </Card>
-        <Card>
-          <div className="flex items-center gap-2 text-blue-400 mb-2">
+        <Card className="flex flex-col items-center text-center panel-recessed p-4 border-t border-black/80 border-b border-white/5">
+          <div className="flex items-center gap-2 text-blue-400 drop-shadow-[0_0_5px_currentColor] mb-2">
             <TrendingUp size={16} />
-            <span className="text-xs uppercase text-slate-500">CV-R²</span>
+            <span className="text-[10px] uppercase text-slate-500 font-bold tracking-widest drop-shadow-md">CV-R²</span>
           </div>
-          <p className="text-2xl font-bold text-white">
-            {best.cv_r2_mean.toFixed(4)} ± {best.cv_r2_std.toFixed(4)}
-          </p>
-          <p className="text-xs text-slate-500 mt-1">5-fold cross-validation</p>
+          <div className="mt-1 bg-panel-900 shadow-lcd rounded px-3 py-1.5 border-t border-black border-b border-white/5 w-full flex flex-col items-center">
+            <p className="text-xl font-display font-bold text-white tracking-wider">
+              {best.cv_r2_mean.toFixed(4)} <span className="text-[10px] text-slate-500 font-sans">± {best.cv_r2_std.toFixed(4)}</span>
+            </p>
+          </div>
+          <p className="text-[9px] text-slate-500 mt-2 uppercase tracking-wider font-bold">5-fold cross-validation</p>
         </Card>
-        <Card>
-          <div className="flex items-center gap-2 text-purple-400 mb-2">
+        <Card className="flex flex-col items-center text-center panel-recessed p-4 border-t border-black/80 border-b border-white/5">
+          <div className="flex items-center gap-2 text-purple-400 drop-shadow-[0_0_5px_currentColor] mb-2">
             <Zap size={16} />
-            <span className="text-xs uppercase text-slate-500">Train Time</span>
+            <span className="text-[10px] uppercase text-slate-500 font-bold tracking-widest drop-shadow-md">Train Time</span>
           </div>
-          <p className="text-2xl font-bold text-white">{best.fit_seconds.toFixed(2)} s</p>
-          <p className="text-xs text-slate-500 mt-1">On 9,600 samples</p>
+          <div className="mt-1 bg-panel-900 shadow-lcd rounded px-3 py-1.5 border-t border-black border-b border-white/5 w-full flex flex-col items-center">
+            <p className="text-2xl font-display font-bold text-white tracking-wider">{best.fit_seconds.toFixed(2)} <span className="text-sm text-slate-500">s</span></p>
+          </div>
+          <p className="text-[9px] text-slate-500 mt-2 uppercase tracking-wider font-bold">On 9,600 samples</p>
         </Card>
       </div>
 
@@ -194,14 +202,14 @@ export default function ModelInsights() {
       </div>
 
       {/* Full metrics table */}
-      <Card>
-        <h3 className="text-sm font-semibold text-slate-200 mb-4">
+      <Card className="overflow-hidden p-0 bg-panel-900 shadow-recessed border-none mt-6">
+        <h3 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest p-4 border-b border-black/80 bg-panel-800 drop-shadow-md">
           Complete Model Comparison
         </h3>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-ink-800 text-xs uppercase text-slate-500 tracking-wider">
+              <tr className="border-b border-black/80 bg-panel-800 text-[10px] font-bold uppercase text-slate-500 tracking-wider shadow-[0_1px_0_rgba(255,255,255,0.05)]">
                 <th className="text-left px-4 py-3">Model</th>
                 <th className="text-right px-4 py-3">MAE</th>
                 <th className="text-right px-4 py-3">RMSE</th>
@@ -215,7 +223,7 @@ export default function ModelInsights() {
               {sortedByR2.map((m) => (
                 <tr
                   key={m.model}
-                  className={`border-b border-ink-800/50 ${
+                  className={`border-b border-black/40 hover:bg-black/20 ${
                     m.model === best.model ? 'bg-eco-500/5' : ''
                   }`}
                 >
@@ -223,7 +231,7 @@ export default function ModelInsights() {
                     <div className="flex items-center gap-2">
                       <span className="font-medium text-slate-200">{m.model}</span>
                       {m.model === best.model && (
-                        <Badge className="bg-eco-500/15 text-eco-300 border-eco-500/30">
+                        <Badge className="bg-panel-900 text-eco-400 shadow-lcd border-t border-black/80 border-b border-white/5 drop-shadow-[0_0_5px_rgba(34,197,94,0.3)]">
                           Best
                         </Badge>
                       )}

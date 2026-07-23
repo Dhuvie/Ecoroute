@@ -163,7 +163,7 @@ export default function RouteOptimizer() {
             <button
               onClick={optimize}
               disabled={loading}
-              className="w-full py-2.5 rounded-lg bg-eco-500 text-white hover:bg-eco-400 disabled:opacity-50 transition-colors font-medium text-sm flex items-center justify-center gap-2"
+              className="w-full py-3 rounded btn-skeuo font-bold uppercase tracking-wider text-[10px] flex items-center justify-center gap-2 mt-4"
             >
               {loading ? (
                 <>
@@ -172,7 +172,7 @@ export default function RouteOptimizer() {
                 </>
               ) : (
                 <>
-                  <Route size={16} />
+                  <Route size={16} className="drop-shadow-md" />
                   Optimize Route
                 </>
               )}
@@ -251,15 +251,18 @@ export default function RouteOptimizer() {
       <style>{`
         .input {
           width: 100%;
-          background: #0f172a;
-          border: 1px solid #1e293b;
-          border-radius: 0.5rem;
+          background: #0b1120;
+          box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8), inset 0 1px 3px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(255, 255, 255, 0.05);
+          border: 1px solid #000;
+          border-radius: 4px;
           padding: 0.5rem 0.75rem;
           color: #e2e8f0;
+          font-family: 'JetBrains Mono', monospace;
           font-size: 0.875rem;
         }
         .input:focus {
           outline: none;
+          box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.9), 0 0 5px rgba(34,197,94,0.4);
           border-color: #22c55e;
         }
       `}</style>
@@ -281,21 +284,21 @@ function ResultCard({
   accent: 'eco' | 'blue' | 'amber' | 'red' | 'purple'
 }) {
   const accentClasses = {
-    eco: 'text-eco-400 bg-eco-500/10',
-    blue: 'text-blue-400 bg-blue-500/10',
-    amber: 'text-amber-400 bg-amber-500/10',
-    red: 'text-red-400 bg-red-500/10',
-    purple: 'text-purple-400 bg-purple-500/10',
+    eco: 'text-eco-400 bg-panel-700 shadow-recessed border-t border-black/50',
+    blue: 'text-blue-400 bg-panel-700 shadow-recessed border-t border-black/50',
+    amber: 'text-amber-400 bg-panel-700 shadow-recessed border-t border-black/50',
+    red: 'text-red-400 bg-panel-700 shadow-recessed border-t border-black/50',
+    purple: 'text-purple-400 bg-panel-700 shadow-recessed border-t border-black/50',
   }
   return (
-    <Card>
-      <div className="p-2.5 rounded-lg w-fit" style={{ background: accentClasses[accent].split(' ')[1], color: accentClasses[accent].split(' ')[0] }}>
-        {icon}
+    <Card className="flex flex-col items-center text-center">
+      <div className={`p-2.5 rounded-lg flex items-center justify-center ${accentClasses[accent]}`}>
+        <div className="drop-shadow-[0_0_5px_currentColor]">{icon}</div>
       </div>
-      <p className="text-xs text-slate-500 uppercase tracking-wider mt-3">{label}</p>
-      <div className="flex items-baseline gap-1 mt-1">
-        <span className="text-xl font-bold text-white">{value}</span>
-        {unit && <span className="text-sm text-slate-400">{unit}</span>}
+      <p className="text-[10px] text-slate-500 uppercase tracking-widest font-bold mt-3 drop-shadow-md">{label}</p>
+      <div className="mt-2 bg-panel-900 shadow-lcd rounded px-3 py-1.5 border-t border-black border-b border-white/5 w-full flex justify-center items-baseline gap-1">
+        <span className="text-xl font-display font-bold text-white tracking-wider">{value}</span>
+        {unit && <span className="text-xs font-display text-slate-500">{unit}</span>}
       </div>
     </Card>
   )

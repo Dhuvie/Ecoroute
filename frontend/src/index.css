@@ -14,7 +14,9 @@ html, body, #root {
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background: #020617;
+  background-color: #1e293b;
+  background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 2px), linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+  background-attachment: fixed;
   color: #e2e8f0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -22,44 +24,105 @@ body {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
 }
 ::-webkit-scrollbar-track {
   background: #0f172a;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.8);
 }
 ::-webkit-scrollbar-thumb {
-  background: #334155;
-  border-radius: 4px;
+  background: linear-gradient(90deg, #475569, #334155);
+  border: 1px solid #1e293b;
+  border-radius: 6px;
+  box-shadow: inset 1px 0 1px rgba(255,255,255,0.2);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: linear-gradient(90deg, #64748b, #475569);
 }
 
-/* Leaflet dark theme overrides */
+/* Skeuomorphic Utilities */
+.panel-skeuo {
+  background: linear-gradient(180deg, #334155 0%, #1e293b 100%);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1), inset 0 -1px 2px rgba(0,0,0,0.8), 0 4px 6px -1px rgba(0,0,0,0.6);
+  border: 1px solid #0f172a;
+  border-radius: 12px;
+}
+
+.panel-recessed {
+  background: #0b1120;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8), inset 0 1px 3px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.btn-skeuo {
+  background: linear-gradient(180deg, #475569 0%, #334155 100%);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15), inset 0 -1px 1px rgba(0, 0, 0, 0.4), 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  border: 1px solid #0f172a;
+  color: #f1f5f9;
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.8);
+  transition: all 0.1s ease;
+}
+
+.btn-skeuo:hover:not(:disabled) {
+  background: linear-gradient(180deg, #64748b 0%, #475569 100%);
+  color: #fff;
+}
+
+.btn-skeuo:active:not(:disabled) {
+  background: #1e293b;
+  box-shadow: inset 0 3px 6px rgba(0,0,0,0.6), inset 0 0 10px rgba(0,0,0,0.5);
+  transform: translateY(2px);
+}
+
+.btn-skeuo:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.led-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.5), inset 0 -1px 2px rgba(0,0,0,0.5), 0 0 10px currentColor;
+  position: relative;
+}
+
+.led-indicator::after {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 0 2px rgba(255,255,255,0.8);
+}
+
+/* Leaflet dark theme overrides - Skeuomorphic */
 .leaflet-container {
   background: #0f172a !important;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.8);
 }
 .leaflet-tile {
-  filter: invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.9);
+  filter: invert(1) hue-rotate(180deg) brightness(0.8) contrast(1.1) sepia(0.2);
 }
 .leaflet-control-attribution {
-  background: rgba(15, 23, 42, 0.7) !important;
-  color: #94a3b8 !important;
+  background: rgba(11, 17, 32, 0.8) !important;
+  color: #64748b !important;
+  border-top-left-radius: 4px;
 }
 .leaflet-bar a {
-  background: #1e293b !important;
+  background: linear-gradient(180deg, #475569 0%, #334155 100%) !important;
   color: #e2e8f0 !important;
-  border-color: #334155 !important;
+  border-color: #0f172a !important;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
 }
-
-/* Card glow on hover */
-.card-glow:hover {
-  box-shadow: 0 0 24px rgba(34, 197, 94, 0.15);
-  transition: box-shadow 0.3s ease;
+.leaflet-bar a:hover {
+  background: linear-gradient(180deg, #64748b 0%, #475569 100%) !important;
 }
-
-/* KPI number animation */
 @keyframes count-up {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }

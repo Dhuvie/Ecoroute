@@ -55,10 +55,10 @@ export default function Analytics() {
               <button
                 key={p}
                 onClick={() => setPeriod(p)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors capitalize ${
+                className={`px-4 py-2 rounded uppercase tracking-wider text-[10px] font-bold transition-colors ${
                   period === p
-                    ? 'bg-eco-500/15 text-eco-300 border border-eco-500/30'
-                    : 'bg-ink-800/40 text-slate-400 border border-transparent hover:text-slate-200'
+                    ? 'bg-panel-800 text-eco-400 shadow-recessed border-t border-black/80 border-b border-white/5 drop-shadow-[0_0_5px_rgba(74,222,128,0.3)]'
+                    : 'btn-skeuo text-slate-400'
                 }`}
               >
                 {p}

@@ -197,34 +197,37 @@ export default function Dashboard() {
       </div>
 
       {/* System info */}
-      <Card>
-        <h3 className="text-sm font-semibold text-slate-200 mb-4 flex items-center gap-2">
-          <Activity size={16} className="text-eco-400" />
-          System Status
+      <div className="panel-recessed p-6 mt-6 border-t border-black/80 border-b border-white/5">
+        <h3 className="text-sm font-semibold text-slate-400 mb-4 flex items-center gap-2 drop-shadow-md">
+          <Activity size={16} className="text-eco-500 drop-shadow-[0_0_5px_rgba(34,197,94,0.5)]" />
+          SYSTEM DIAGNOSTICS
         </h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-          <div>
-            <p className="text-xs text-slate-500 uppercase tracking-wider">API Status</p>
-            <p className="text-eco-300 font-medium mt-1">{health?.status || 'ok'}</p>
+          <div className="bg-panel-900 rounded shadow-lcd p-3 border-t border-black border-b border-white/5">
+            <p className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">API Status</p>
+            <p className="text-eco-400 font-display font-bold mt-1 tracking-wider drop-shadow-[0_0_5px_rgba(74,222,128,0.4)]">{health?.status || 'ok'}</p>
           </div>
-          <div>
-            <p className="text-xs text-slate-500 uppercase tracking-wider">Version</p>
-            <p className="text-slate-200 font-medium mt-1">{health?.version || '1.0.0'}</p>
+          <div className="bg-panel-900 rounded shadow-lcd p-3 border-t border-black border-b border-white/5">
+            <p className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Version</p>
+            <p className="text-slate-300 font-display font-bold mt-1 tracking-wider drop-shadow-md">{health?.version || '1.0.0'}</p>
           </div>
-          <div>
-            <p className="text-xs text-slate-500 uppercase tracking-wider">ML Model</p>
-            <p className="text-slate-200 font-medium mt-1 capitalize">
+          <div className="bg-panel-900 rounded shadow-lcd p-3 border-t border-black border-b border-white/5">
+            <p className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">ML Model</p>
+            <p className="text-slate-300 font-display font-bold mt-1 uppercase tracking-wider drop-shadow-md">
               {health?.model_name || 'N/A'}
             </p>
           </div>
-          <div>
-            <p className="text-xs text-slate-500 uppercase tracking-wider">Database</p>
-            <p className="text-slate-200 font-medium mt-1">
-              {health?.database_ready ? 'Connected' : 'Offline'}
-            </p>
+          <div className="bg-panel-900 rounded shadow-lcd p-3 border-t border-black border-b border-white/5">
+            <p className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Database</p>
+            <div className="flex items-center gap-2 mt-1">
+              <div className={health?.database_ready ? "led-indicator text-eco-500 bg-eco-500" : "led-indicator text-red-500 bg-red-500"}></div>
+              <p className="text-slate-300 font-display font-bold uppercase tracking-wider drop-shadow-md">
+                {health?.database_ready ? 'Connected' : 'Offline'}
+              </p>
+            </div>
           </div>
         </div>
-      </Card>
+      </div>
     </div>
   )
 }

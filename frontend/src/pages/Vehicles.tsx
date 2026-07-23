@@ -43,9 +43,9 @@ export default function Vehicles() {
         actions={
           <button
             onClick={() => setShowForm(!showForm)}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-eco-500/15 text-eco-300 hover:bg-eco-500/25 transition-colors text-sm font-medium border border-eco-500/30"
+            className="flex items-center gap-2 px-4 py-2 rounded btn-skeuo font-bold uppercase tracking-wider text-[10px]"
           >
-            <Plus size={16} />
+            <Plus size={14} className="drop-shadow-md" />
             Add Vehicle
           </button>
         }
@@ -122,16 +122,16 @@ export default function Vehicles() {
                 />
               </div>
 
-              <div className="mt-4 pt-3 border-t border-ink-800">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-slate-500">Maintenance Score</span>
-                  <span className="text-slate-300 font-medium">
+              <div className="mt-4 pt-3 border-t border-black/80 shadow-[0_-1px_0_rgba(255,255,255,0.05)]">
+                <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider">
+                  <span className="text-slate-500 drop-shadow-md">Maintenance Score</span>
+                  <span className="text-eco-400 font-display drop-shadow-[0_0_5px_rgba(74,222,128,0.3)]">
                     {formatNumber(v.maintenance_score * 100, 0)}%
                   </span>
                 </div>
-                <div className="mt-1.5 w-full h-1.5 rounded-full bg-ink-800 overflow-hidden">
+                <div className="mt-2 w-full h-2 rounded-full bg-panel-900 shadow-recessed border-t border-black/60 overflow-hidden relative">
                   <div
-                    className="h-full bg-gradient-to-r from-eco-500 to-eco-400 rounded-full"
+                    className="absolute top-0 left-0 h-full bg-eco-500 shadow-[inset_0_1px_2px_rgba(255,255,255,0.5),_0_0_8px_rgba(34,197,94,0.8)] rounded-full"
                     style={{ width: `${v.maintenance_score * 100}%` }}
                   />
                 </div>
@@ -290,18 +290,18 @@ function AddVehicleForm({ onCreated }: { onCreated: () => void }) {
             {error}
           </div>
         )}
-        <div className="md:col-span-4 flex justify-end gap-2">
+        <div className="md:col-span-4 flex justify-end gap-3 mt-2">
           <button
             type="button"
             onClick={onCreated}
-            className="px-4 py-2 rounded-lg text-slate-300 hover:text-white text-sm"
+            className="px-4 py-2 rounded text-slate-400 hover:text-white text-[10px] uppercase font-bold tracking-wider"
           >
             Cancel
           </button>
           <button
             type="submit"
             disabled={submitting}
-            className="px-4 py-2 rounded-lg bg-eco-500 text-white hover:bg-eco-400 disabled:opacity-50 text-sm font-medium"
+            className="px-6 py-2 rounded btn-skeuo text-[10px] uppercase font-bold tracking-wider"
           >
             {submitting ? 'Saving...' : 'Save Vehicle'}
           </button>
@@ -310,15 +310,18 @@ function AddVehicleForm({ onCreated }: { onCreated: () => void }) {
       <style>{`
         .input {
           width: 100%;
-          background: #0f172a;
-          border: 1px solid #1e293b;
-          border-radius: 0.5rem;
+          background: #0b1120;
+          box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8), inset 0 1px 3px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(255, 255, 255, 0.05);
+          border: 1px solid #000;
+          border-radius: 4px;
           padding: 0.5rem 0.75rem;
           color: #e2e8f0;
+          font-family: 'JetBrains Mono', monospace;
           font-size: 0.875rem;
         }
         .input:focus {
           outline: none;
+          box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.9), 0 0 5px rgba(34,197,94,0.4);
           border-color: #22c55e;
         }
       `}</style>

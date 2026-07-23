@@ -38,8 +38,8 @@ export default function Deliveries() {
         title="Deliveries"
         subtitle="View and manage all delivery orders across the network"
         actions={
-          <button className="flex items-center gap-2 px-3 py-2 rounded-lg bg-eco-500/15 text-eco-300 hover:bg-eco-500/25 transition-colors text-sm font-medium border border-eco-500/30">
-            <Plus size={16} />
+          <button className="flex items-center gap-2 px-4 py-2 rounded btn-skeuo font-bold uppercase tracking-wider text-[10px]">
+            <Plus size={14} className="drop-shadow-md" />
             New Delivery
           </button>
         }
@@ -66,10 +66,10 @@ export default function Deliveries() {
           <button
             key={f}
             onClick={() => setFilter(f)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+            className={`px-4 py-2 rounded font-bold uppercase tracking-wider text-[10px] transition-colors ${
               filter === f
-                ? 'bg-eco-500/15 text-eco-300 border border-eco-500/30'
-                : 'bg-ink-800/40 text-slate-400 border border-transparent hover:text-slate-200'
+                ? 'bg-panel-800 text-eco-400 shadow-recessed border-t border-black/80 border-b border-white/5 drop-shadow-[0_0_5px_rgba(74,222,128,0.3)]'
+                : 'btn-skeuo text-slate-400'
             }`}
           >
             {f.charAt(0).toUpperCase() + f.slice(1)}
@@ -84,11 +84,11 @@ export default function Deliveries() {
       ) : filtered.length === 0 ? (
         <EmptyState message="No deliveries found" />
       ) : (
-        <Card className="overflow-hidden p-0">
+        <Card className="overflow-hidden p-0 bg-panel-900 shadow-recessed border-none">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-ink-800 text-xs uppercase text-slate-500 tracking-wider">
+                <tr className="border-b border-black/80 bg-panel-800 text-[10px] font-bold uppercase text-slate-500 tracking-wider drop-shadow-md shadow-[0_1px_0_rgba(255,255,255,0.05)]">
                   <th className="text-left px-4 py-3">Code</th>
                   <th className="text-left px-4 py-3">Priority</th>
                   <th className="text-left px-4 py-3">Status</th>
@@ -103,10 +103,10 @@ export default function Deliveries() {
                 {filtered.map((d) => (
                   <tr
                     key={d.id}
-                    className="border-b border-ink-800/50 hover:bg-ink-800/30"
+                    className="border-b border-black/40 hover:bg-black/20"
                   >
                     <td className="px-4 py-3">
-                      <div className="font-mono text-slate-200">{d.delivery_code}</div>
+                      <div className="font-mono text-slate-200 text-xs">{d.delivery_code}</div>
                       <div className="text-xs text-slate-500 flex items-center gap-1 mt-0.5">
                         <MapPin size={10} />
                         {d.destination_lat.toFixed(2)}, {d.destination_lon.toFixed(2)}
