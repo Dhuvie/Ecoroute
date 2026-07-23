@@ -25,4 +25,7 @@ services:
     plan: free
     envVars:
       - key: VITE_API_URL
-        value: "https://ecoroute-backend.onrender.com/api/v1" # Update this to your deployed backend service URL
+        fromService:
+          type: web
+          name: ecoroute-backend
+          envVarKey: RENDER_EXTERNAL_URL
